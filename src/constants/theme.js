@@ -12,7 +12,7 @@ const colors = {
   gray4: "#F7F8FA",
   blue: "#0074E3",
   caption: "#9AA0A2",
-  inactiveColor:"#B7BDC2"
+  inactiveColor: "#B7BDC2"
 };
 
 const sizes = {
@@ -21,6 +21,7 @@ const sizes = {
   font: 14,
   border: 15,
   padding: 25,
+  radius: 6,
 
   // font sizes
   h1: 39,
