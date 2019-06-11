@@ -34,6 +34,8 @@ export default class Typography extends Component {
       black,
       white,
       gray,
+      darkgray,
+      note,
       gray2,
       style,
       children,
@@ -70,6 +72,8 @@ export default class Typography extends Component {
       tertiary && styles.tertiary,
       black && styles.black,
       white && styles.white,
+      note && styles.note,
+      darkgray && styles.darkgray,
       gray && styles.gray,
       gray2 && styles.gray2,
       style // rewrite predefined styles
@@ -123,6 +127,8 @@ const styles = StyleSheet.create({
   white: { color: theme.colors.white },
   gray: { color: theme.colors.gray },
   gray2: { color: theme.colors.gray2 },
+  note: { color: theme.colors.caption },
+  darkgray: { color: theme.colors.darkgray },
   // fonts
   h1: theme.fonts.h1,
   h2: theme.fonts.h2,

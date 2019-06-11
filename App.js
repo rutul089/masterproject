@@ -9,18 +9,22 @@
 import React, { Component } from "react";
 import { Platform, StyleSheet, View } from "react-native";
 import { Block, Text } from "./src/components";
+import AppNavigator from "./src/navigation/AppNavigator";
 
 export default class App extends React.Component {
   render() {
     return (
-      <Block>
-        <Text h1> Hello </Text>
-        <Text h1 regular> Regular </Text>
-        <Text h1 bold > Bold </Text>
-        <Text h1 semibold> Hello </Text>
-        <Text h1 medium> Medium </Text>
-        <Text h1 light> Light </Text>
-      </Block>
+      <View style={styles.container}>
+        {Platform.OS === "ios" && <StatusBar barStyle="default" />}
+        <AppNavigator />
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff"
+  }
+});
