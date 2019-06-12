@@ -5,12 +5,22 @@ import { theme } from "../constants";
 import { Icon } from "native-base";
 // create a component
 class Home extends Component {
+  // static defaultNavigationOptions = {
+  //   headerTitle: "Settings Activity",
+  //   headerStyle: {
+  //     backgroundColor: "#28F1A6",
+  //     elevation: 0,
+  //     shadowOpacity: 0
+  //   },
+  //   headerTintColor: "#333333"
+  // };
+
   static navigationOptions = {
     tabBarIcon: ({ tintColor }) => (
       <Icon
-        name="bell"
-        type="EvilIcons"
-        style={{ color: tintColor, fontSize: 35 }}
+        name="home"
+        type="FontAwesome"
+        style={{ color: tintColor, fontSize: theme.sizes.iconSize }}
       />
     )
   };

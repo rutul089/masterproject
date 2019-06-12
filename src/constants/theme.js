@@ -12,7 +12,8 @@ const colors = {
   gray4: "#F7F8FA",
   blue: "#0074E3",
   caption: "#9AA0A2",
-  inactiveColor: "#B7BDC2"
+  inactiveColor: "#B7BDC2",
+  borderColor:"#ECEEF0"
 };
 
 const sizes = {
@@ -22,7 +23,7 @@ const sizes = {
   border: 15,
   padding: 25,
   radius: 6,
-
+  iconSize:25,
   // font sizes
   h1: 39,
   h2: 29,
