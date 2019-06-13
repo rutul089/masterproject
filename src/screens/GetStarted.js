@@ -1,12 +1,15 @@
 //import liraries
 import React, { Component } from "react";
-import { View, StyleSheet,Dimensions,Image } from "react-native";
+import { View, StyleSheet, Dimensions, Image } from "react-native";
 import { Block, Text, Button } from "../components";
 import { theme } from "../constants";
 const { width, height } = Dimensions.get("window");
 
 // create a component
 class GetStarted extends Component {
+  static navigationOptions = {
+    header: null
+  };
   render() {
     return (
       <Block

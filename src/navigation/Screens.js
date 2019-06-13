@@ -21,61 +21,37 @@ const DashboardTabNavigator = createBottomTabNavigator(
     Setting
   },
   {
-    navigationOptions: ({ navigation }) => {
-      const { routeName } = navigation.state.routes[navigation.state.index];
-      return {
-        headerTitle: routeName,
-        headerStyle: {
-          elevation: 1,
-          shadowOpacity: 1
-        }
-      };
-    },
+    // navigationOptions: ({ navigation }) => {
+    //   const { routeName } = navigation.state.routes[navigation.state.index];
+    //   let name;
+    //   if (routeName == "Home") {
+    //     name = " offers";
+    //   } else {
+    //     name = routeName;
+    //   }
+    //   return {
+    //     headerTitle: name,
+    //     headerStyle: {
+    //       elevation: 1,
+    //       shadowOpacity: 1
+    //     },
+    //     headerTitleStyle: {
+    //       textAlign: "center",
+    //       flex: 1,
+    //       fontSize: theme.sizes.header,
+    //       fontFamily: 'Rubik-Regular',
+    //     }
+    //   };
+    // },
     tabBarOptions: {
       activeTintColor: theme.colors.black,
       inactiveTintColor: theme.colors.inactiveColor,
       showLabel: false
+    },
+    navigationOptions: {
+      header: null
     }
   }
-
-  // {
-  //   defaultNavigationOptions: ({ navigation }) => ({
-  //     tabBarIcon: ({ focused, horizontal, tintColor }) => {
-  //       const { routeName } = navigation.state;
-
-  //       let IconComponent = Icon;
-  //       let iconName;
-  //       let type;
-  //       if (routeName === "Home") {
-  //         iconName = `home`;
-  //         type = "FontAwesome";
-  //       } else if (routeName === "Setting") {
-  //         iconName = `setting`;
-  //         type = "AntDesign";
-  //       } else if (routeName == "Saved") {
-  //         iconName = `staro`;
-  //         type = "AntDesign";
-  //       } else if (routeName == "Search") {
-  //         type = "Ionicons";
-  //         iconName = `ios-search`;
-  //       }
-
-  //       // You can return any component that you like here!
-  //       return (
-  //         <IconComponent
-  //           name={iconName}
-  //           style={{ color: tintColor, fontSize: theme.sizes.iconSize }}
-  //           type={type}
-  //         />
-  //       );
-  //     }
-  //   }),
-  //   tabBarOptions: {
-  //     activeTintColor: "red",
-  //     inactiveTintColor: "gray",
-  //     showLabel: false
-  //   }
-  // }
 );
 
 export default createStackNavigator({
