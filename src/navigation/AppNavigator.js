@@ -7,7 +7,7 @@ import Screens from "./Screens";
 
 export default createAppContainer(
   createSwitchNavigator({
-    Main: Screens,
-    Auth
+    Auth,
+    Main: Screens
   })
 );

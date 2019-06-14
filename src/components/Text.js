@@ -97,23 +97,23 @@ const styles = StyleSheet.create({
   // variations
   regular: {
     fontWeight: "normal",
-    fontFamily: "Rubik-Regular"
+    fontFamily: theme.fontFamily.regular
   },
   bold: {
     fontWeight: "bold",
-    fontFamily: "Rubik-Bold"
+    fontFamily: theme.fontFamily.semiBold
   },
   semibold: {
-    // fontWeight: "500",
-    fontFamily: "Rubik-SemiBold"
+    fontWeight: "600",
+    fontFamily: theme.fontFamily.semiBold
   },
   medium: {
-    // fontWeight: "500",
-    fontFamily: "Rubik-Medium"
+    fontWeight: "500",
+    fontFamily: theme.fontFamily.medium
   },
   light: {
     // fontWeight: "200",
-    fontFamily: "Rubik-Light"
+    fontFamily: theme.fontFamily.light
   },
   // position
   center: { textAlign: "center" },

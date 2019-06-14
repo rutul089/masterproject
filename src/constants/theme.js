@@ -3,17 +3,18 @@ const colors = {
   primary: "#FFF",
   secondary: "#4DA1FF",
   tertiary: "#FFE358",
-  black: "#2F2F2F",
+  black: "#1d262c",
   white: "#FFFFFF",
   gray: "#BDBFC7",
   darkgray: "#A12642",
   gray2: "#D8D8D8",
   gray3: "#F0F0F0",
   gray4: "#F7F8FA",
-  blue: "#0074E3",
-  caption: "#9AA0A2",
-  inactiveColor: "#B7BDC2",
-  borderColor:"#ECEEF0"
+  blue: "#0074e4",
+  caption: "#71828A",
+  inactiveColor: "#71828A",
+  borderColor: "#E7ECEE",
+  red: "#cf1e43"
 };
 
 const sizes = {
@@ -22,49 +23,67 @@ const sizes = {
   font: 14,
   border: 15,
   padding: 25,
-  radius: 6,
-  iconSize:25,
+  radius: 8,
+  iconSize: 25,
   // font sizes
-  h1: 39,
-  h2: 29,
-  h3: 19,
-  title: 18,
+  h1: 20,
+  h2: 14,
+  h3: 13,
+  title: 20,
   header: 24,
-  body: 12,
+  body: 14,
   caption: 12,
-  small: 8
+  small: 11,
+  buttonHeight: 44,
+  border: 1
+};
+
+const fontFamily = {
+  regular: "Poppins-Regular",
+  light: "Poppins-Light",
+  bold: "Poppins-Bold",
+  semiBold: "Poppins-SemiBold",
+  medium: "Poppins-Medium"
 };
 
 const fonts = {
   h1: {
-    fontFamily: "Rubik-Light",
-    fontSize: sizes.h1
+    fontFamily: fontFamily.semiBold,
+    fontSize: sizes.h1,
+    fontWeight: "600"
   },
   h2: {
-    fontFamily: "Rubik-Medium",
+    fontFamily: fontFamily.medium,
     fontSize: sizes.h2
   },
   h3: {
-    fontFamily: "Rubik-Regular",
+    fontFamily: fontFamily.regular,
     fontSize: sizes.h3
   },
   header: {
-    fontFamily: "Rubik-Bold",
+    fontFamily: fontFamily.semiBold,
     fontSize: sizes.header
   },
   title: {
-    fontFamily: "Rubik-Regular",
+    fontFamily: fontFamily.regular,
     fontSize: sizes.title
   },
   body: {
     fontSize: sizes.body
   },
   caption: {
-    fontSize: sizes.caption
+    fontSize: sizes.caption,
+    color: colors.caption
   },
   small: {
     fontSize: sizes.small
+  },
+  buttonStyle: {
+    backgroundColor: colors.blue,
+    borderRadius: sizes.radius,
+    height: sizes.buttonHeight,
+    borderWidth: sizes.border,
+    borderColor:colors.inactiveColor ,
   }
 };
-
-export { colors, sizes, fonts };
+export { colors, sizes, fonts, fontFamily };

@@ -156,11 +156,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
   labelStyle: {
-    fontFamily: "Rubik-Light",
+    fontFamily: "Poppins-Light",
     fontSize: theme.sizes.base
   },
   inputStyle: {
-    fontFamily: "Rubik-Regular",
+    fontFamily: "Poppins-Regular",
     fontSize: theme.sizes.base,
     color: theme.colors.black
   },

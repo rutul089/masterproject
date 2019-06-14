@@ -1,8 +1,15 @@
 //import liraries
 import React, { Component } from "react";
-import { View, StyleSheet, Dimensions, Image } from "react-native";
-import { Block, Text, Button } from "../components";
+import {
+  View,
+  StyleSheet,
+  Dimensions,
+  Image,
+  ImageBackground
+} from "react-native";
+import { Block, Text } from "../components";
 import { theme } from "../constants";
+import { Button } from "native-base";
 const { width, height } = Dimensions.get("window");
 
 // create a component
@@ -12,63 +19,38 @@ class GetStarted extends Component {
   };
   render() {
     return (
-      <Block
-        middle
-        flex={1}
-        column
-        style={{
-          alignItems: "center",
-          paddingLeft: theme.sizes.base,
-          paddingRight: theme.sizes.base
-        }}
-      >
-        <Block
-          middle
-          flex={0.7}
-          column
-          style={{
-            alignItems: "center",
-            justifyContent: "flex-end",
-            paddingLeft: theme.sizes.base,
-            paddingRight: theme.sizes.base
-          }}
-        >
+      <Block style={{ backgroundColor: theme.colors.white }} flex={1}>
+        <Block flex={0.6} style={{ top: 0, bottom: 0, left: 0, right: 0 }}>
           <Image
-            source={require("../../assets/image/base/illustration_1.png")}
-            resizeMode="contain"
+            source={require("../../assets/image/icons/welcome.jpg")}
+            resizeMode="cover"
             style={{
+              bottom: 0,
               flex: 1,
-              width: width / 2,
-              height: height,
-              overflow: "visible",
-              justifyContent: "center",
-              alignItems: "center"
+              width: width
             }}
           />
-
-          <Text center h2 style={{ marginTop: theme.sizes.padding }}>
-            Cheers to Discounts!
-          </Text>
-          <Text
-            note
-            center
-            flex={1}
-            size={theme.sizes.title}
-            style={styles.noteStyle}
-          >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            sollicitudin orci in urna placerat porttitor. Duis dignissim libero
-            sed tellus euismod, id vehicula urna faucibus.
+        </Block>
+        <Block
+          center
+          middle
+          flex={0.3}
+          style={{ marginTop: theme.sizes.padding }}
+        >
+          <Text h1> Cheers to Discounts!</Text>
+          <Text note style={styles.noteStyle}>
+            {" "}
+            Curabitur lobortis id lorem id bibendum. Ut id consectetur magna.
+            Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at.
           </Text>
         </Block>
-        <Block style={{ justifyContent: "flex-end", width: "100%" }} flex={0.2}>
+        <Block center middle flex={0.1} style={{ margin: theme.sizes.padding }}>
           <Button
-            flex={1}
-            color={theme.colors.blue}
-            style={{ width: "100%", alignSelf: "flex-end" }}
+            full
+            style={theme.fonts.buttonStyle}
             onPress={() => this.props.navigation.navigate("Welcome")}
           >
-            <Text center bold white title>
+            <Text semiBold white>
               Get Started
             </Text>
           </Button>
@@ -89,7 +71,7 @@ const styles = StyleSheet.create({
   noteStyle: {
     marginTop: 20,
     textAlign: "center",
-    lineHeight: 25
+    lineHeight: 20
   }
 });
 
