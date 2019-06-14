@@ -14,13 +14,7 @@ const { width, height } = Dimensions.get("screen");
 // create a component
 class Home extends Component {
   static navigationOptions = {
-    tabBarIcon: ({ tintColor }) => (
-      <Icon
-        name="home"
-        type="FontAwesome"
-        style={{ color: tintColor, fontSize: theme.sizes.iconSize }}
-      />
-    )
+    header: null
   };
 
   renderRow() {
@@ -34,7 +28,10 @@ class Home extends Component {
             alignItems: "center"
           }}
         >
-          <Thumbnail source={require("../../assets/image/base/avatar_1.png")} />
+          <Thumbnail
+            source={require("../../assets/image/base/avatar_1.png")}
+            style={{ height: 45, width: 45 }}
+          />
         </Block>
         <Block
           flex={0.75}
@@ -42,13 +39,21 @@ class Home extends Component {
             marginLeft: theme.sizes.padding
           }}
         >
-          <Text semibold black size={theme.sizes.title}>
+          <Text medium black size={theme.sizes.body}>
             10-40% off
           </Text>
-          <Text note style={{ paddingVertical: 6 }}>
+          <Text
+            light
+            size={theme.sizes.caption}
+            style={{ marginTop: 6, color: "#9399a3" }}
+          >
             For first time user
           </Text>
-          <Block flex={1} row style={{ justifyContent: "space-between" }}>
+          <Block
+            flex={1}
+            row
+            style={{ justifyContent: "space-between", marginTop: 6 }}
+          >
             <Block
               row
               card
@@ -69,7 +74,7 @@ class Home extends Component {
                   marginRight: 2
                 }}
               />
-              <Text body medium>
+              <Text small medium>
                 4.5
               </Text>
             </Block>
@@ -83,7 +88,7 @@ class Home extends Component {
                 alignItems: "center"
               }}
             >
-              <Text body medium color="#368CD5">
+              <Text small medium color="#368CD5">
                 Food
               </Text>
             </Block>
@@ -96,7 +101,7 @@ class Home extends Component {
                 alignItems: "center"
               }}
             >
-              <Text body medium color="#B24960">
+              <Text small medium color="#B24960">
                 12 Days
               </Text>
             </Block>
@@ -107,8 +112,8 @@ class Home extends Component {
   }
   render() {
     return (
-      <Block style={styles.container} flex={1}>
-        <Content>
+      <Content>
+        <Block style={styles.container} flex={1}>
           <Block
             row
             flex={0.1}
@@ -117,9 +122,7 @@ class Home extends Component {
               alignItems: "center"
             }}
           >
-            <Text size={theme.sizes.header} bold>
-              Offer Galore
-            </Text>
+            <Text h1>Offers Galore</Text>
             <Thumbnail
               small
               source={require("../../assets/image/base/avatar_1.png")}
@@ -155,7 +158,9 @@ class Home extends Component {
                 Recommended for you
               </Text>
             </Block>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Offer")}
+            >
               <Block
                 row
                 flex={1}
@@ -183,8 +188,8 @@ class Home extends Component {
           {this.renderRow()}
           {this.renderRow()}
           {this.renderRow()}
-        </Content>
-      </Block>
+        </Block>
+      </Content>
     );
   }
 }
@@ -207,10 +212,11 @@ const styles = StyleSheet.create({
   },
   request: {
     marginTop: theme.sizes.padding,
-    padding: theme.sizes.base,
+    paddingVertical: 14,
+    paddingHorizontal: 20,
     marginBottom: 6,
     borderWidth: 1,
-    borderRadius: theme.sizes.border,
+    borderRadius: theme.sizes.radius,
     borderColor: theme.colors.borderColor
   },
   requestStatus: {

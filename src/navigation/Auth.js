@@ -9,7 +9,7 @@ import { Platform } from "react-native";
 import { theme } from "../constants";
 
 export default createStackNavigator(
-  { GetStarted, Welcome, Login, SignUp },
+  { Login, Welcome, Login, SignUp },
   {
     defaultNavigationOptions: {
       headerStyle: {

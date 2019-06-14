@@ -62,7 +62,7 @@ export const styles = StyleSheet.create({
     flexDirection: "column"
   },
   card: {
-    borderRadius: theme.sizes.border
+    borderRadius: 10
   },
   center: {
     alignItems: "center"

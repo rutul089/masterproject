@@ -11,11 +11,24 @@ import Search from "./../screens/Search";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { theme } from "../constants";
 import { Icon } from "native-base";
+import DetailNavigation from "./DetailNavigation";
+import index from "../screens";
 
 //-- Exporting navigation class
 const DashboardTabNavigator = createBottomTabNavigator(
   {
-    Home,
+    DetailNavigation: {
+      screen: DetailNavigation,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <Icon
+            name="home"
+            type="FontAwesome"
+            style={{ color: tintColor, fontSize: theme.sizes.iconSize }}
+          />
+        )
+      }
+    },
     Saved,
     Search,
     Setting
