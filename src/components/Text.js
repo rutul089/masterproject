@@ -90,7 +90,7 @@ export default class Typography extends Component {
 const styles = StyleSheet.create({
   // default style
   text: {
-    fontFamily: "Rubik-Regular",
+    fontFamily: theme.fontFamily.regular,
     fontSize: theme.sizes.font,
     color: theme.colors.black
   },

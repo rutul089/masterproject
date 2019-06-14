@@ -10,7 +10,8 @@ import {
 
 import { Block, Text } from "../components";
 import { theme } from "../constants";
-import { Button } from "native-base";
+import { Button, Thumbnail } from "native-base";
+import { ImageBackground } from "react-native";
 const { width, height } = Dimensions.get("window");
 
 // create a component
@@ -39,129 +40,107 @@ class Welcome extends Component {
       <Block
         column
         flex={1}
-        middle
         style={{
           alignItems: "center",
-          backgroundColor: theme.colors.white,
-          paddingLeft: theme.sizes.base,
-          paddingRight: theme.sizes.base
+          backgroundColor: theme.colors.white
         }}
       >
-        <Block flex={0.3} middle>
-          <Image
-            source={require("../../assets/image/base/ic_logo.png")}
-            resizeMode="contain"
+        <Block
+          flex={0.4}
+          style={{
+            paddingVertical: theme.sizes.padding * 1.5
+          }}
+        >
+          <ImageBackground
+            source={require("../../assets/image/icons/bg.jpg")}
+            resizeMode="stretch"
             style={{
-              width: width / 2,
-              height: "30%"
-            }}
-          />
-        </Block>
-        <Block flex={0.1} middle column>
-          <Text center bold h2 style={{ marginTop: theme.sizes.padding }}>
-            Welcome Aboard!
-          </Text>
-        </Block>
-        <Block flex={0.1} middle>
-          <Text
-            note
-            center
-            semibold
-            flex={1}
-            size={theme.sizes.font}
-            style={styles.noteStyle}
-          >
-            Signup to get started with the app.Login if you already have an
-            account
-          </Text>
-        </Block>
-        <Block flex={0.3} column style={{ marginTop: theme.sizes.padding }}>
-          <Block
-            row
-            flex={1}
-            style={{
-              justifyContent: "space-around",
+              flex: 1,
+              height: null,
               width: width,
-              paddingLeft: theme.sizes.base,
-              paddingRight: theme.sizes.base
+              alignItems: "center",
+              justifyContent: "center"
             }}
           >
-            <Button
-              bordered
-              style={{
-                flex: 0.5,
-                width: "100%",
-                marginRight: theme.sizes.radius,
-                alignItems: "center",
-                justifyContent: "center",
-                borderWidth: 1,
-                borderRadius: theme.sizes.radius,
-                borderColor: theme.colors.borderColor
-              }}
-              onPress={() => this.handleClickFacebook()}
-            >
-              <Image
-                source={require("../../assets/image/icons/ic_facebook.png")}
-                style={{
-                  height: theme.sizes.iconSize,
-                  width: theme.sizes.iconSize
-                }}
-              />
-            </Button>
-            <Button
-              bordered
-              style={{
-                flex: 0.5,
-                width: "100%",
-                marginRight: theme.sizes.radius,
-                alignItems: "center",
-                justifyContent: "center",
-                borderWidth: 1,
-                borderRadius: theme.sizes.radius,
-                borderColor: theme.colors.borderColor
-              }}
-              onPress={() => this.handleClickGoogle()}
-            >
-              <Image
-                source={require("../../assets/image/icons/ic_google.png")}
-                style={{
-                  height: theme.sizes.iconSize,
-                  width: theme.sizes.iconSize
-                }}
-              />
-            </Button>
+            <Thumbnail
+              style={{ resizeMode: "repeat" }}
+              large
+              square
+              source={require("../../assets/ic_logo.jpg")}
+            />
+          </ImageBackground>
+        </Block>
+        <Block flex={0.6}>
+          <Block flex={0.4} center middle>
+            <Text h1>Welcome Aboard!</Text>
+            <Text note style={styles.noteStyle}>
+              Signup to get started with the app. Login if you already have an
+              account.
+            </Text>
           </Block>
           <Block
-            flex={1}
-            column
-            bottom
-            style={{ justifyContent: "space-between", alignItems: "center" }}
+            flex={0.6}
+            style={{
+              marginHorizontal: theme.sizes.padding,
+              flexDirection: "column"
+            }}
           >
-            <Button
-              block
+            <Block
+              flex={1}
+              row
+              bottom
               style={{
-                flex: 0.5,
-                backgroundColor: theme.colors.blue,
-                alignItems: "center",
-                justifyContent: "center",
-                borderRadius: theme.sizes.radius,
-                marginLeft: theme.sizes.padding,
-                marginRight: theme.sizes.padding
+                justifyContent: "space-between",
+                alignItems: "center"
               }}
-              onPress={() => this.handleClickSignUp()}
             >
-              <Text center regular white style={{ fontWeight: "bold" }}>
-                Signup with E-mail
-              </Text>
-            </Button>
+              <TouchableOpacity
+                style={[{ marginRight: 12 }, styles.buttonStyle]}
+                onPress={() => this.handleClickFacebook()}
+              >
+                <Image
+                  source={require("../../assets/image/icons/ic_facebook.png")}
+                  style={{
+                    height: theme.sizes.iconSize,
+                    width: theme.sizes.iconSize
+                  }}
+                />
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => this.handleClickGoogle()}
+                style={[{ marginLeft: 12 }, styles.buttonStyle]}
+              >
+                <Image
+                  source={require("../../assets/image/icons/ic_google.png")}
+                  style={{
+                    height: theme.sizes.iconSize,
+                    width: theme.sizes.iconSize
+                  }}
+                />
+              </TouchableOpacity>
+            </Block>
+            <Block center middle>
+              <Button
+                full
+                style={theme.fonts.buttonStyle}
+                onPress={() => this.props.navigation.navigate("Welcome")}
+              >
+                <Text semibold white size={13}>
+                  Signup with E-mail
+                </Text>
+              </Button>
+            </Block>
+            <Block>
+              <Button
+                transparent
+                style={{ alignSelf: "center" }}
+                onPress={() => this.handleClickLogin()}
+              >
+                <Text medium size={theme.sizes.h3}>Login to my Account</Text>
+              </Button>
+            </Block>
           </Block>
-          <Button
-            transparent
-            style={{ alignSelf: "center" }}
-            onPress={() => this.handleClickLogin()}
-          >
-            <Text bold>Login to my Account</Text>
-          </Button>
         </Block>
       </Block>
     );
@@ -179,7 +158,20 @@ const styles = StyleSheet.create({
   noteStyle: {
     marginTop: 20,
     textAlign: "center",
-    lineHeight: 22
+    paddingHorizontal: theme.sizes.padding,
+    fontFamily: theme.fontFamily.regular,
+    fontWeight: "400",
+    lineHeight: 20
+  },
+  buttonStyle: {
+    flex: 0.5,
+    width: "100%",
+    height: theme.sizes.buttonHeight,
+    borderWidth: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: theme.sizes.radius,
+    borderColor: theme.colors.borderColor
   }
 });
 

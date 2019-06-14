@@ -50,8 +50,8 @@ class GetStarted extends Component {
             style={theme.fonts.buttonStyle}
             onPress={() => this.props.navigation.navigate("Welcome")}
           >
-            <Text semiBold white>
-              Get Started
+            <Text semibold white size={theme.sizes.h3}>
+              Get started
             </Text>
           </Button>
         </Block>
@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
   noteStyle: {
     marginTop: 20,
     textAlign: "center",
+    paddingHorizontal: theme.sizes.padding,
     lineHeight: 20
   }
 });

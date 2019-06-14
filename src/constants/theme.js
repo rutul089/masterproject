@@ -22,7 +22,7 @@ const sizes = {
   base: 16,
   font: 14,
   border: 15,
-  padding: 25,
+  padding: 20,
   radius: 8,
   iconSize: 25,
   // font sizes
