@@ -58,7 +58,8 @@ const fonts = {
   },
   h3: {
     fontFamily: fontFamily.regular,
-    fontSize: sizes.h3
+    fontSize: sizes.h3,
+    fontWeight: "400"
   },
   header: {
     fontFamily: fontFamily.semiBold,

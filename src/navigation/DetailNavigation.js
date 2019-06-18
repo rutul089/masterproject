@@ -6,4 +6,4 @@ import { theme } from "../constants";
 import Home from "./../screens/Home";
 import Offer from "./../screens/Offer";
 
-export default createStackNavigator({ Offer, Home });
+export default createStackNavigator({ Home, Offer });
