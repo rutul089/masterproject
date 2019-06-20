@@ -5,140 +5,59 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Image,
+  ImageBackground,
   Dimensions,
   TouchableOpacity
 } from "react-native";
 
 import { theme } from "../constants";
 import { Text, Block } from "../components";
-import { Button, Input, Item, Label, Content, Form, Radio } from "native-base";
+import { Button, Input, Item, Label, Content, Form, Radio,Thumbnail } from "native-base";
 
-const { height } = Dimensions.get("window");
+const { height ,width} = Dimensions.get("window");
 
 // create a component
 class Login extends Component {
   render() {
     return (
-      <Content>
-        <Block center middle>
-          <Block middle>
-            <Image
-              resizeMode="contain"
-              source={require("../../assets/image/base/ic_logo.png")}
-              style={{
-                height: 70,
-                width: 102,
-                marginBottom: theme.sizes.padding
-              }}
-            />
-          </Block>
-          <Block flex={2.5} center>
-            <Text h2 style={{ marginBottom: 6 }}>
-              Login
-            </Text>
-            <Text
-              note
-              size={theme.sizes.base}
-              style={{
-                marginLeft: theme.sizes.padding,
-                marginRight: theme.sizes.padding,
-                marginTop: theme.sizes.radius,
-                marginBottom: theme.sizes.radius
-              }}
-            >
-              Welcome back , login to continue
-            </Text>
-
+      <React.Fragment>
+        <Content>
+          <Block
+            column
+            flex={1}
+            style={{
+              alignItems: "center",
+              backgroundColor: theme.colors.white
+            }}
+          >
             <Block
-              center
+              flex={0.4}
               style={{
-                marginStart: theme.sizes.padding,
-                marginEnd: theme.sizes.padding,
-                marginTop: 5
+                paddingVertical: theme.sizes.padding * 1.5
               }}
             >
-              <Item
-                floatingLabel
-                style={[
-                  styles.floatingLabelStyle,
-                  { marginBottom: theme.sizes.padding }
-                ]}
-              >
-                <Label style={styles.labelStyle}>Username</Label>
-                <Input style={styles.inputStyle} />
-              </Item>
-              <Item floatingLabel style={styles.floatingLabelStyle}>
-                <Label style={styles.labelStyle}>Password</Label>
-                <Input secureTextEntry={true} style={styles.inputStyle} />
-              </Item>
-              <Block
-                flex={1}
-                row
+              <ImageBackground
+                source={require("../../assets/image/icons/bg.jpg")}
+                resizeMode="stretch"
                 style={{
-                  justifyContent: "space-around",
-                  marginTop: theme.sizes.padding,
-                  marginBottom: theme.sizes.padding
+                  flex: 1,
+                  height: null,
+                  width: width,
+                  alignItems: "center",
+                  justifyContent: "center"
                 }}
               >
-                <Block
-                  row
-                  flex={1}
-                  style={{
-                    alignItems: "center"
-                  }}
-                >
-                  <Radio
-                    color={"#B1BAC7"}
-                    selectedColor={"#BBBEC4"}
-                    selected={true}
-                  />
-                  <Text
-                    regular
-                    note
-                    size={theme.sizes.base}
-                    style={{ marginLeft: theme.sizes.base }}
-                  >
-                    Remember me
-                  </Text>
-                </Block>
-                <Block
-                  style={{
-                    flex: 1,
-                    alignItems: "flex-end"
-                  }}
-                >
-                  <TouchableOpacity>
-                    <Text
-                      style={[
-                        { flex: 1, alignItems: "flex-end" },
-                        styles.inputStyle
-                      ]}
-                    >
-                      Forgot Password ?
-                    </Text>
-                  </TouchableOpacity>
-                </Block>
-              </Block>
+                <Thumbnail
+                  style={{ resizeMode: "repeat" }}
+                  large
+                  square
+                  source={require("../../assets/ic_logo.jpg")}
+                />
+              </ImageBackground>
             </Block>
-            <Button
-              block
-              style={styles.buttonStyle}
-              onPress={() => this.props.navigation.navigate("Main")}
-            >
-              <Text center regular white style={{ fontWeight: "bold" }}>
-                Login to my Account
-              </Text>
-            </Button>
-            <Button
-              transparent
-              style={{ alignSelf: "center" }}
-              onPress={() => this.props.navigation.navigate("SignUp")}
-            >
-              <Text bold>Signup for New Account</Text>
-            </Button>
           </Block>
-        </Block>
-      </Content>
+        </Content>
+      </React.Fragment>
     );
   }
 }
