@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   ImageBackground,
+  TouchableNativeFeedback,
   ScrollView,
   Dimensions
 } from "react-native";
@@ -158,7 +159,7 @@ class Home extends Component {
                     }}
                   >
                     <Text small medium color="#368CD5">
-                      {category.tags[0]}
+                      {category.type}
                     </Text>
                   </Block>
                   <Block
@@ -206,21 +207,16 @@ class Home extends Component {
     return (
       <Content>
         <Block style={styles.container} flex={1}>
-          <Block
-            row
-            flex={0.1}
-            style={{
-              justifyContent: "space-between",
-              alignItems: "center",
-              paddingRight: theme.sizes.padding,
-              paddingLeft: theme.sizes.padding
-            }}
-          >
+          <Block row flex={0.1} style={styles.header}>
             <Text h1>Offers Galore</Text>
-            <Thumbnail
-              small
-              source={require("../../assets/image/base/avatar_1.png")}
-            />
+            <TouchableNativeFeedback
+              onPress={() => this.props.navigation.navigate("Setting")}
+            >
+              <Thumbnail
+                small
+                source={require("../../assets/image/base/avatar_1.png")}
+              />
+            </TouchableNativeFeedback>
           </Block>
           <Block
             flex={1}
@@ -264,6 +260,12 @@ const styles = StyleSheet.create({
     // paddingRight: theme.sizes.padding,
     // paddingLeft: theme.sizes.padding,
     paddingTop: theme.sizes.padding
+  },
+  header: {
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingRight: theme.sizes.padding,
+    paddingLeft: theme.sizes.padding
   },
   campingImage: {
     flex: 1,

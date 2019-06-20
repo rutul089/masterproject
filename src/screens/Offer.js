@@ -13,95 +13,14 @@ import { Block, Text } from "./../components";
 import { Icon, Content, Button, Thumbnail } from "native-base";
 import { theme } from "../constants";
 import { Platform } from "react-native";
+import { images } from "../constants/mocks";
 const { width, height } = Dimensions.get("window");
-const mocks = [
-  {
-    id: 1,
-    user: {
-      name: "Lelia Chavez",
-      avatar: "https://randomuser.me/api/portraits/women/44.jpg"
-    },
-    saved: true,
-    location: "Santorini, Greece",
-    temperature: 34,
-    title: "Santorini",
-    description:
-      "Santorini is one of the Cyclades islands in the Aegean Sea. It was devastated by a volcanic eruption in the 16th century BC, forever shaping its rugged landscape. The whitewashed, cubiform houses of its 2 principal towns, Fira and Oia, cling to cliffs above an underwater caldera (crater). They overlook the sea, small islands to the west and beaches made up of black, red and white lava pebbles.",
-    rating: 4.3,
-    reviews: 3212,
-    preview:
-      "https://images.unsplash.com/photo-1507501336603-6e31db2be093?auto=format&fit=crop&w=800&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1507501336603-6e31db2be093?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1507501336603-6e31db2be093?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1507501336603-6e31db2be093?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1507501336603-6e31db2be093?auto=format&fit=crop&w=800&q=80"
-    ]
-  },
-  {
-    id: 2,
-    user: {
-      name: "Lelia Chavez",
-      avatar: "https://randomuser.me/api/portraits/women/44.jpg"
-    },
-    saved: false,
-    location: "Loutraki, Greece",
-    temperature: 34,
-    title: "Loutraki",
-    description: "This attractive small town, 80 kilometers from Athens",
-    rating: 4.6,
-    reviews: 3212,
-    preview:
-      "https://images.unsplash.com/photo-1458906931852-47d88574a008?auto=format&fit=crop&w=800&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1458906931852-47d88574a008?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1446903572544-8888a0e60687?auto=format&fit=crop&w=800&q=80"
-    ]
-  },
-  {
-    id: 3,
-    user: {
-      name: "Lelia Chavez",
-      avatar: "https://randomuser.me/api/portraits/women/44.jpg"
-    },
-    saved: true,
-    location: "Santorini, Greece",
-    temperature: 34,
-    title: "Santorini",
-    description: "Santorini - Description",
-    rating: 3.2,
-    reviews: 3212,
-    preview:
-      "https://images.unsplash.com/photo-1507501336603-6e31db2be093?auto=format&fit=crop&w=800&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1507501336603-6e31db2be093?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1507501336603-6e31db2be093?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1507501336603-6e31db2be093?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1507501336603-6e31db2be093?auto=format&fit=crop&w=800&q=80"
-    ]
-  },
-  {
-    id: 4,
-    user: {
-      name: "Lelia Chavez",
-      avatar: "https://randomuser.me/api/portraits/women/44.jpg"
-    },
-    location: "Loutraki, Greece",
-    temperature: 34,
-    title: "Loutraki",
-    description: "This attractive small town, 80 kilometers from Athens",
-    rating: 5,
-    reviews: 3212,
-    preview:
-      "https://images.unsplash.com/photo-1458906931852-47d88574a008?auto=format&fit=crop&w=800&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1458906931852-47d88574a008?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1446903572544-8888a0e60687?auto=format&fit=crop&w=800&q=80"
-    ]
-  }
-];
+
 // create a component
 class Offer extends Component {
+  state = {
+    categories: []
+  };
   static navigationOptions = {
     headerRightContainerStyle: {
       alignItems: Platform.OS === "ios" ? "flex-end" : "center",
@@ -123,6 +42,13 @@ class Offer extends Component {
       </TouchableOpacity>
     )
   };
+
+  componentDidMount = () => {
+    const categories = this.props.navigation.getParam("category");
+    this.setState({ categories: categories });
+    console.log(categories);
+  };
+
   renderImageSliderItem = item => {
     return (
       <Block
@@ -158,18 +84,7 @@ class Offer extends Component {
 
   renderOfferDetail = () => {
     return (
-      <Block
-        flex={1}
-        column
-        style={{
-          marginTop: theme.sizes.padding * 1.5,
-          borderRadius: theme.sizes.radius,
-          borderColor: theme.colors.borderColor,
-          borderWidth: 1,
-          paddingVertical: theme.sizes.padding,
-          paddingHorizontal: theme.sizes.padding / 2
-        }}
-      >
+      <Block flex={1} column style={styles.offerBlock}>
         <Text h2 medium>
           Offer Details
         </Text>
@@ -228,6 +143,7 @@ class Offer extends Component {
 
   render() {
     const { offers } = this.props;
+    const { categories } = this.state;
     return (
       <React.Fragment>
         <Content>
@@ -235,13 +151,13 @@ class Offer extends Component {
             <Block flex={1} row>
               <Block flex={0.25} top>
                 <Thumbnail
-                  source={require("../../assets/image/base/avatar_1.png")}
+                  source={categories.image}
                   style={{ height: 45, width: 45 }}
                 />
               </Block>
               <Block flex={0.75} column>
                 <Block>
-                  <Text h1>10-50% off</Text>
+                  <Text h1>{categories.offer}</Text>
                   <Text
                     caption
                     style={{
@@ -250,8 +166,7 @@ class Offer extends Component {
                       paddingVertical: 8
                     }}
                   >
-                    Flat discounts on every food purchase on above 50$. T&C
-                    Apply
+                    {categories.note}
                   </Text>
                 </Block>
                 <Block
@@ -280,7 +195,7 @@ class Offer extends Component {
                       }}
                     />
                     <Text small medium>
-                      4.5
+                      {categories.rating}
                     </Text>
                   </Block>
                   <Block
@@ -294,7 +209,7 @@ class Offer extends Component {
                     }}
                   >
                     <Text small medium color="#368CD5">
-                      Food
+                      {categories.type}
                     </Text>
                   </Block>
                   <Block
@@ -307,7 +222,7 @@ class Offer extends Component {
                     }}
                   >
                     <Text small medium color="#B24960">
-                      12 Days
+                      {categories.timeLeft}
                     </Text>
                   </Block>
                 </Block>
@@ -356,11 +271,19 @@ const styles = StyleSheet.create({
     paddingTop: theme.sizes.padding / 2,
     justifyContent: "space-between",
     alignItems: "center"
+  },
+  offerBlock: {
+    marginTop: theme.sizes.padding * 1.5,
+    borderRadius: theme.sizes.radius,
+    borderColor: theme.colors.borderColor,
+    borderWidth: 1,
+    paddingVertical: theme.sizes.padding,
+    paddingHorizontal: theme.sizes.padding / 2
   }
 });
 
 Offer.defaultProps = {
-  offers: mocks
+  offers: images
 };
 //make this component available to the app
 export default Offer;
